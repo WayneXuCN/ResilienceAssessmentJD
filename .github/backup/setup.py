@@ -1,4 +1,4 @@
-"""Python setup.py for resilienceassessmentjd package"""
+"""Python setup.py for ResilienceAssessmentJD package"""
 import io
 import os
 from setuptools import find_packages, setup
@@ -6,7 +6,7 @@ from setuptools import find_packages, setup
 
 def read(*paths, **kwargs):
     """Read the contents of a text file safely.
-    >>> read("resilienceassessmentjd", "VERSION")
+    >>> read("ResilienceAssessmentJD", "VERSION")
     '0.1.0'
     >>> read("README.md")
     ...
@@ -30,9 +30,9 @@ def read_requirements(path):
 
 
 setup(
-    name="resilienceassessmentjd",
-    version=read("resilienceassessmentjd", "VERSION"),
-    description="Awesome resilienceassessmentjd created by WenjieXuCN",
+    name="ResilienceAssessmentJD",
+    version=read("ResilienceAssessmentJD", "VERSION"),
+    description="Awesome ResilienceAssessmentJD created by WenjieXuCN",
     url="https://github.com/WenjieXuCN/ResilienceAssessmentJD/",
     long_description=read("README.md"),
     long_description_content_type="text/markdown",
@@ -40,7 +40,7 @@ setup(
     packages=find_packages(exclude=["tests", ".github"]),
     install_requires=read_requirements("requirements.txt"),
     entry_points={
-        "console_scripts": ["resilienceassessmentjd = resilienceassessmentjd.__main__:main"]
+        "console_scripts": ["ResilienceAssessmentJD = ResilienceAssessmentJD.__main__:main"]
     },
     extras_require={"test": read_requirements("requirements-test.txt")},
 )

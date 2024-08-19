@@ -1,28 +1,30 @@
-"""CLI interface for resilienceassessmentjd project.
-
-Be creative! do whatever you want!
-
-- Install click or typer and create a CLI app
-- Use builtin argparse
-- Start a web application
-- Import things from your .base module
-"""
+import json
+import os
+import argparse
+from resilience.core.UnifiedModel import UnifiedModel
 
 
-def main():  # pragma: no cover
-    """
-    The main function executes on commands:
-    `python -m resilienceassessmentjd` and `$ resilienceassessmentjd `.
+def main():
+    parser = argparse.ArgumentParser(description="Run Resilience Assessment.")
+    parser.add_argument("input_path", type=str, help="Path to the input JSON file.")
+    parser.add_argument("output_path", type=str, help="Path to the output JSON file.")
 
-    This is your program's entry point.
+    args = parser.parse_args()
 
-    You can change this function to do whatever you want.
-    Examples:
-        * Run a test suite
-        * Run a server
-        * Do some other stuff
-        * Run a command line application (Click, Typer, ArgParse)
-        * List all available tasks
-        * Run an application (Flask, FastAPI, Django, etc.)
-    """
-    print("This will do something")
+    # 读取输入文件
+    with open(args.input_path, "r", encoding="utf-8") as file:
+        request_json = json.load(file)
+
+    # 初始化模型并执行
+    model = UnifiedModel(request_json)
+    result = model.execute()
+    
+    # 自动生成输出文件名
+    base_name = os.path.basename(args.input_path)  # 获取输入文件名
+    name, ext = os.path.splitext(base_name)  # 分离文件名和扩展名
+    output_filename = f"{name}_result.json"  # 新文件名
+    output_file_path = os.path.join(args.output_path, output_filename)
+
+    # 保存结果
+    with open(output_file_path, "w", encoding="utf-8") as file:
+        json.dump(result, file, ensure_ascii=False, indent=4)

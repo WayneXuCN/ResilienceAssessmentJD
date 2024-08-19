@@ -1,6 +1,6 @@
-"""Entry point for resilienceassessmentjd."""
+"""Entry point for ResilienceAssessmentJD."""
 
-from resilienceassessmentjd.cli import main  # pragma: no cover
+from resilience.cli import main  # pragma: no cover
 
 if __name__ == "__main__":  # pragma: no cover
     main()

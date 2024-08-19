@@ -1,0 +1,152 @@
+{
+  "assess_type": "self_assessment",
+  "weight_method": {
+    "subjective_method": "HEWM"
+  },
+  "normalization": "BRM",
+  "assess_method": "MACBETH",
+  "parameters": {
+    "criteria": [
+      {
+        "name": "防汛抗旱类应急物资储备数量",
+        "dimension": "D1",
+        "element": "E1",
+        "attribute": "0"
+      },
+      {
+        "name": "防汛抗旱类临期应急物资处置数量",
+        "dimension": "D1",
+        "element": "E1",
+        "attribute": "1"
+      },
+      {
+        "name": "防汛抗旱类超期应急物资处置数量",
+        "dimension": "D1",
+        "element": "E1",
+        "attribute": "1"
+      },
+      {
+        "name": "防汛抗旱类应急物资储备种类数",
+        "dimension": "D1",
+        "element": "E1",
+        "attribute": "0"
+      },
+      {
+        "name": "防汛抗旱类临期应急物资种类数",
+        "dimension": "D1",
+        "element": "E1",
+        "attribute": "1"
+      },
+      {
+        "name": "防汛抗旱类过期应急物资种类数",
+        "dimension": "D1",
+        "element": "E1",
+        "attribute": "1"
+      },
+      {
+        "name": "应急物资储备仓库的位置便利性",
+        "dimension": "D2",
+        "element": "E1",
+        "attribute": "0"
+      },
+      {
+        "name": "建成区路网密度",
+        "dimension": "D2",
+        "element": "E1",
+        "attribute": "0"
+      },
+      {
+        "name": "物流仓储用地面积",
+        "dimension": "D2",
+        "element": "E1",
+        "attribute": "0"
+      },
+      {
+        "name": "防汛抗旱类应急物资供应商多元化程度",
+        "dimension": "D2",
+        "element": "E1",
+        "attribute": "0"
+      },
+      {
+        "name": "防汛抗旱类应急物资产能响应时效",
+        "dimension": "D2",
+        "element": "E1",
+        "attribute": "1"
+      },
+      {
+        "name": "应急物资储备形式多元化",
+        "dimension": "D3",
+        "element": "E1",
+        "attribute": "2"
+      },
+      {
+        "name": "应急物资储备快速补仓产能",
+        "dimension": "D3",
+        "element": "E1",
+        "attribute": "0"
+      },
+      {
+        "name": "应急物资储备快速补仓周期",
+        "dimension": "D3",
+        "element": "E1",
+        "attribute": "1"
+      }
+    ],
+    "data": [
+      {
+        "id": "中央防汛抗旱北京仓库",
+        "value": [
+          22075, 25, 13823, 25, 1, 8, 4, 5.8, 50.88, 8.666666667, 3, 1,
+          1316.714286, 12
+        ],
+        "period": "2022",
+        "area": "110101"
+      },
+      {
+        "id": "中央防汛抗旱北京仓库",
+        "value": [
+          20000, 22, 12111, 20, 1, 7, 3, 4, 40, 7, 2, 1,
+          1200, 10
+        ],
+        "period": "2021",
+        "area": "110101"
+      },
+      {
+        "id": "中央防汛抗旱北京仓库",
+        "value": [
+          18000, 20, 10984, 18, 1, 6, 2, 3, 30, 6, 2, 1,
+          1200, 10
+        ],
+        "period": "2020",
+        "area": "110101"
+      },
+      {
+        "id": "中央防汛抗旱天津仓库",
+        "value": [
+          487088, 20, 130452, 40, 1, 29, 3, 6.4349, 56, 6, 3, 1,
+          42170.95604, 18.73333333
+        ],
+        "period": "2022",
+        "area": "110101"
+      },
+      {
+        "id": "中央防汛抗旱天津仓库",
+        "value": [
+          420011, 18, 120000, 49, 1, 31, 3, 5.7894, 51, 5, 3, 1,
+          37000, 14
+        ],
+        "period": "2021",
+        "area": "110101"
+      },
+      {
+        "id": "中央防汛抗旱天津仓库",
+        "value": [
+          387088, 14, 100452, 35, 1, 24, 3, 4.5794, 44.33, 4.384615385, 3, 1,
+          37000, 12
+        ],
+        "period": "2020",
+        "area": "110101"
+      }
+    ]
+  }
+}

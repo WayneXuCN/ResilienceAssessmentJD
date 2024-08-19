@@ -1,5 +1,5 @@
-from resilienceassessmentjd.base import NAME
+from resilience.base import NAME
 
 
 def test_base():
-    assert NAME == "resilienceassessmentjd"
+    assert NAME == "ResilienceAssessmentJD"

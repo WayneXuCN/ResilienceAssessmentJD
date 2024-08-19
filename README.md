@@ -1,85 +1,154 @@
+# ResilienceAssessmentJD
 
-# Python Project Template
+## 简介
 
-A low dependency and really simple to start project template for Python Projects.
+这是为应急物资物流仓储调配保障体系弹性评估项目开发的弹性评估模型`ResilienceAssessmentJD`的Python包，项目的目录结构展示在下方，包括所有必要组件，以及测试和文档该项目支持多种弹性评估方法，以帮助研究者和决策者评估和比较应急物资物流仓储调配保障体系的弹性。
 
-See also 
-- [Flask-Project-Template](https://github.com/rochacbruno/flask-project-template/) for a full feature Flask project including database, API, admin interface, etc.
-- [FastAPI-Project-Template](https://github.com/rochacbruno/fastapi-project-template/) The base to start an openapi project featuring: SQLModel, Typer, FastAPI, JWT Token Auth, Interactive Shell, Management Commands.
-
-### HOW TO USE THIS TEMPLATE
-
-> **DO NOT FORK** this is meant to be used from **[Use this template](https://github.com/rochacbruno/python-project-template/generate)** feature.
-
-1. Click on **[Use this template](https://github.com/rochacbruno/python-project-template/generate)**
-3. Give a name to your project  
-   (e.g. `my_awesome_project` recommendation is to use all lowercase and underscores separation for repo names.)
-3. Wait until the first run of CI finishes  
-   (Github Actions will process the template and commit to your new repo)
-4. If you want [codecov](https://about.codecov.io/sign-up/) Reports and Automatic Release to [PyPI](https://pypi.org)  
-  On the new repository `settings->secrets` add your `PYPI_API_TOKEN` and `CODECOV_TOKEN` (get the tokens on respective websites)
-4. Read the file [CONTRIBUTING.md](CONTRIBUTING.md)
-5. Then clone your new project and happy coding!
-
-> **NOTE**: **WAIT** until first CI run on github actions before cloning your new project.
-
-### What is included on this template?
-
-- 🖼️ Templates for starting multiple application types:
-  * **Basic low dependency** Python program (default) [use this template](https://github.com/rochacbruno/python-project-template/generate)
-  * **Flask** with database, admin interface, restapi and authentication [use this template](https://github.com/rochacbruno/flask-project-template/generate).
-  **or Run `make init` after cloning to generate a new project based on a template.**
-- 📦 A basic [setup.py](setup.py) file to provide installation, packaging and distribution for your project.  
-  Template uses setuptools because it's the de-facto standard for Python packages, you can run `make switch-to-poetry` later if you want.
-- 🤖 A [Makefile](Makefile) with the most useful commands to install, test, lint, format and release your project.
-- 📃 Documentation structure using [mkdocs](http://www.mkdocs.org)
-- 💬 Auto generation of change log using **gitchangelog** to keep a HISTORY.md file automatically based on your commit history on every release.
-- 🐋 A simple [Containerfile](Containerfile) to build a container image for your project.  
-  `Containerfile` is a more open standard for building container images than Dockerfile, you can use buildah or docker with this file.
-- 🧪 Testing structure using [pytest](https://docs.pytest.org/en/latest/)
-- ✅ Code linting using [flake8](https://flake8.pycqa.org/en/latest/)
-- 📊 Code coverage reports using [codecov](https://about.codecov.io/sign-up/)
-- 🛳️ Automatic release to [PyPI](https://pypi.org) using [twine](https://twine.readthedocs.io/en/latest/) and github actions.
-- 🎯 Entry points to execute your program using `python -m <resilienceassessmentjd>` or `$ resilienceassessmentjd` with basic CLI argument parsing.
-- 🔄 Continuous integration using [Github Actions](.github/workflows/) with jobs to lint, test and release your project on Linux, Mac and Windows environments.
-
-> Curious about architectural decisions on this template? read [ABOUT_THIS_TEMPLATE.md](ABOUT_THIS_TEMPLATE.md)  
-> If you want to contribute to this template please open an [issue](https://github.com/rochacbruno/python-project-template/issues) or fork and send a PULL REQUEST.
-
-[❤️ Sponsor this project](https://github.com/sponsors/rochacbruno/)
-
-<!--  DELETE THE LINES ABOVE THIS AND WRITE YOUR PROJECT README BELOW -->
-
----
-# resilienceassessmentjd
-
-[![codecov](https://codecov.io/gh/WenjieXuCN/ResilienceAssessmentJD/branch/main/graph/badge.svg?token=ResilienceAssessmentJD_token_here)](https://codecov.io/gh/WenjieXuCN/ResilienceAssessmentJD)
-[![CI](https://github.com/WenjieXuCN/ResilienceAssessmentJD/actions/workflows/main.yml/badge.svg)](https://github.com/WenjieXuCN/ResilienceAssessmentJD/actions/workflows/main.yml)
-
-Awesome resilienceassessmentjd created by WenjieXuCN
-
-## Install it from PyPI
-
-```bash
-pip install resilienceassessmentjd
+```
+ResilienceAssessmentJD/
+├── ResilienceAssessmentJD/
+│   ├── __init__.py
+│   ├── __main__.py
+│   ├── VERSION
+│   ├── core/
+│   │   ├── __init__.py
+│   │   ├── UnifiedModel.py
+│   │   ├── MethodFactory.py
+│   │   ├── DecisionMethod.py
+│   │   ├── ScalingMethod.py
+│   │   └── ExceptionHandler.py
+│   ├── methods/
+│   │   ├── __init__.py
+│   │   ├── AHP.py
+│   │   ├── CombinedMethod.py
+│   │   ├── HEWM.py
+│   │   ├── DEMATEL.py
+│   │   ├── MACBETH.py
+│   │   ├── EWM.py
+│   │   ├── MEE.py
+│   │   ├── PCA.py
+│   │   └── VIKOR.py
+│   └── cli.py
+├── docs/
+│   └── index.md
+├── .github/
+│   ├── release_message.sh
+│   └── workflows/
+├── .gitignore
+├── HISTORY.md
+├── LICENSE
+├── Makefile
+├── MANIFEST.in
+├── mkdocs.yml
+├── README.md
+├── requirements.txt
+├── requirements-test.txt
+├── setup.py
+└── tests/
+    ├── conftest.py
+    ├── __init__.py
+    ├── test_core/
+    │   └── test_unified_model.py
+    └── test_methods/
+        ├── test_ahp.py
+        ├── test_dematel.py
+        ├── test_ewm.py
+        └── test_mee.py
 ```
 
-## Usage
 
-```py
-from resilienceassessmentjd import BaseClass
-from resilienceassessmentjd import base_function
 
-BaseClass().base_method()
-base_function()
+```markdown
+ResilienceAssessmentJD/
+├── ResilienceAssessmentJD/
+│   ├── __init__.py
+│   ├── core/
+│   │   ├── __init__.py
+│   │   ├── UnifiedModel.py
+│   │   ├── MethodFactory.py
+│   │   ├── DecisionMethod.py
+│   │   ├── ScalingMethod.py
+│   │   └── ExceptionHandler.py
+│   ├── methods/
+│   │   ├── __init__.py
+│   │   ├── AHP.py
+│   │   ├── CombinedMethod.py
+│   │   ├── HEWM.py
+│   │   ├── DEMATEL.py
+│   │   ├── MACBETH.py
+│   │   ├── EWM.py
+│   │   ├── MEE.py
+│   │   ├── PCA.py
+│   │   └── VIKOR.py
+│   ├── tests/
+│   │   ├── __init__.py
+│   │   ├── test_ahp.py
+│   │   ├── test_dematel.py
+│   │   ├── test_ewm.py
+│   │   └── test_mee.py
+│   └── data/
+│      ├── test_input.json
+│      └── test_output.json
+├── notebooks/
+│   ├── example_analysis1.ipynb
+│   └── example_analysis2.ipynb
+├── dist/
+│   ├── ResilienceAssessmentJD-0.1.0.tar.gz
+│   └── ResilienceAssessmentJD-0.1.0-py3-none-any.whl
+├── docs/
+│   ├── installation_guide.md
+│   ├── user_guide.md
+│   └── api_documentation.md
+├── README.md
+├── LICENSE
+├── pyproject.toml
+├── MANIFEST.in
+└── requirements.txt
 ```
 
-```bash
-$ python -m resilienceassessmentjd
-#or
-$ resilienceassessmentjd
+
+
+
+- `ResilienceAssessmentJD/core`：核心代码模块。
+  - `__init__.py`：初始化脚本，用于设置模块。
+  - `UnifiedModel.py`：项目的入口文件，提供一个统一的接口用于执行弹性评估。 
+  - `MethodFactory.py`：包含用于创建不同决策方法实例的工厂类。 
+  - `DecisionMethods.py`：实现了多种决策方法的模块。 
+  - `ScalingMethod.py`：实现多种数据处理方法的模块
+  - `Criterion.py`: 为不同的模型提供了统一的数据接口，确保了数据处理的一致性和可靠性。
+  - `ExceptionHandler.py`：提供一个异常处理器，用于处理异常情况。
+- `ResilienceAssessmentJD/methods`：具体方法实现
+- `ResilienceAssessmentJD/tests/`：包含所有单元测试。
+  - `__init__.py`：初始化测试模块。 
+- `notebooks/`：包含示例 Jupyter 笔记本。
+  - `example_analysis1.ipynb`：示例分析1。
+  - `example_analysis2.ipynb`：示例分析2。
+- `ResilienceAssessmentJD/data/`：存储测试输入和输出的示例数据。 
+  - `test_input.json`：示例输入 JSON 数据。 
+  - `test_output.json`：从测试输入预期的输出 JSON 数据。
+- `docs/`：详细的项目文档，包括安装指南、用户指南、API文档等。
+- `README.md`：项目概述和快速开始指南。
+- `requirements.txt`：列出所有依赖项，用于配置项目环境。
+
+## 快速开始
+
+以下是一个简单的例子，展示如何使用本库进行基础的弹性评估：
+
+```python
+import json
+from ResilienceAssessmentJD.core import UnifiedModel
+
+test_input_path = "ResilienceAssessmentJD/data/data_防汛仓_京津冀_排序.json"
+with open(test_input_path, 'r', encoding='utf-8') as file:
+    request_json = json.load(file)
+
+model = UnifiedModel(request_json)
+result = model.execute()
+# 保存结果为Json
+with open("ResilienceAssessmentJD/data/防汛仓_京津冀_排序_result.json", 'w', encoding='utf-8') as file:
+    json.dump(result, file, ensure_ascii=False, indent=4)
 ```
 
-## Development
+## 测试
 
-Read the [CONTRIBUTING.md](CONTRIBUTING.md) file.
+本项目使用 pytest 进行单元测试。
