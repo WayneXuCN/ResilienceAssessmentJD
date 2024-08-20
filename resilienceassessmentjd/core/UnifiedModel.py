@@ -5,11 +5,10 @@
 # @Author    :Wenjie Xu
 # @Email     :wenjie.xu.cn@outlook.com
 
-import traceback
-
 from .Criterion import Criterion
 from .ExceptionHandler import *
 from .MethodFactory import DecisionMethodFactory, ScalingMethodFactory
+import traceback
 
 
 class UnifiedModel:

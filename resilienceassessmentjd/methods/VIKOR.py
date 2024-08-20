@@ -5,11 +5,14 @@
 # @Author    :Wenjie Xu
 # @Email     :wenjie.xu.cn@outlook.com
 
-import numpy as np
-import pandas as pd
 import traceback
 
+import numpy as np
+import pandas as pd
+
 from ..core.DecisionMethod import DecisionMethod
+
+
 # from ..core.ExceptionHandler import *
 
 
@@ -111,14 +114,23 @@ class VIKOR(DecisionMethod):
             result = []
             norm_df = self.filled_df.div(self.filled_df.abs().sum(axis=0), axis=1)
             comprehensive_results = self.perform_computation(norm_df, criteria_types, weights)
-            for id, area in ids_area.items():
-                score = {
-                    'id': id,
-                    'area': area,
-                    'type': '综合评估',
-                    'index_value': comprehensive_results.loc[id, 'RI'],
-                    'level': comprehensive_results.index.get_loc(id) + 1
-                }
+            for _id, area in ids_area.items():
+                if _id in self.params['invalid_ids']:
+                    score = {
+                        'id': _id,
+                        'area': area,
+                        'type': '综合评估',
+                        'index_value': '/',
+                        'level': '/'
+                    }
+                else:
+                    score = {
+                        'id': _id,
+                        'area': area,
+                        'type': '综合评估',
+                        'index_value': comprehensive_results.loc[_id, 'RI'],
+                        'level': comprehensive_results.index.get_loc(_id) + 1
+                    }
                 result.append(score)
 
             elements = {f'E{i}': self.get_keys_by_value(criteria_dict, 'element', f'E{i}') for i in range(1, 4)}
@@ -132,15 +144,25 @@ class VIKOR(DecisionMethod):
                 ele_weights_matrix = weights[criteria]
                 ele_criteria_types = {c: criteria_types[c] for c in criteria}
                 ele_results = self.perform_computation(ele_decision_matrix, ele_criteria_types, ele_weights_matrix)
-                for id, area in ids_area.items():
-                    score = {
-                        'id': id,
-                        'area': area,
-                        'type': '要素评估',
-                        'element': e,
-                        'index_value': ele_results.loc[id, 'RI'],
-                        'level': ele_results.index.get_loc(id) + 1
-                    }
+                for _id, area in ids_area.items():
+                    if _id in self.params['invalid_ids']:
+                        score = {
+                            'id': _id,
+                            'area': area,
+                            'type': '要素评估',
+                            'element': e,
+                            'index_value': '/',
+                            'level': '/'
+                        }
+                    else:
+                        score = {
+                            'id': _id,
+                            'area': area,
+                            'type': '要素评估',
+                            'element': e,
+                            'index_value': ele_results.loc[_id, 'RI'],
+                            'level': ele_results.index.get_loc(_id) + 1
+                        }
                     result.append(score)
 
             dim_ele_list = {f'D{i}': {f'E{j}': [] for j in range(1, 4)} for i in range(1, 4)}
@@ -160,16 +182,27 @@ class VIKOR(DecisionMethod):
                     dim_criteria_types = {ind: criteria_types[ind] for ind in c}
                     # 对该维度进行VIKOR分析
                     dim_results = self.perform_computation(dim_decision_matrix, dim_criteria_types, dim_weights_matrix)
-                    for id, area in ids_area.items():
-                        score = {
-                            'id': id,
-                            'area': area,
-                            'type': '维度评估',
-                            'dimension': dim,
-                            'element': ele,
-                            'index_value': dim_results.loc[id, 'RI'],
-                            'level': dim_results.index.get_loc(id) + 1
-                        }
+                    for _id, area in ids_area.items():
+                        if _id in self.params['invalid_ids']:
+                            score = {
+                                'id': _id,
+                                'area': area,
+                                'type': '维度评估',
+                                'dimension': dim,
+                                'element': ele,
+                                'index_value': '/',
+                                'level': '/'
+                            }
+                        else:
+                            score = {
+                                'id': _id,
+                                'area': area,
+                                'type': '维度评估',
+                                'dimension': dim,
+                                'element': ele,
+                                'index_value': dim_results.loc[_id, 'RI'],
+                                'level': dim_results.index.get_loc(_id) + 1
+                            }
                         result.append(score)
             return result
         except Exception as e:

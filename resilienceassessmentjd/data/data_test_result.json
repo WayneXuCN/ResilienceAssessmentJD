@@ -1,0 +1,213 @@
+{
+    "status": "0",
+    "message": "success",
+    "assess_type": "classification",
+    "results": [
+        {
+            "id": "顺丰速运",
+            "area": "86",
+            "type": "维度评估",
+            "dimension": "D2",
+            "element": "E1",
+            "rectified_value": -0.3427083436622388,
+            "qualified_value": -0.801058201058201,
+            "good_value": -0.2665530948324816,
+            "excellent_value": 0.0,
+            "level": "优秀"
+        },
+        {
+            "id": "宿州市优顺汽车运输有限公司",
+            "area": "86",
+            "type": "维度评估",
+            "dimension": "D2",
+            "element": "E1",
+            "rectified_value": "/",
+            "qualified_value": "/",
+            "good_value": "/",
+            "excellent_value": "/",
+            "level": "/"
+        },
+        {
+            "id": "顺丰速运",
+            "area": "86",
+            "type": "维度评估",
+            "dimension": "D2",
+            "element": "E2",
+            "rectified_value": 0.0,
+            "qualified_value": 0.0,
+            "good_value": 0.0,
+            "excellent_value": 0.0,
+            "level": "待整改"
+        },
+        {
+            "id": "宿州市优顺汽车运输有限公司",
+            "area": "86",
+            "type": "维度评估",
+            "dimension": "D2",
+            "element": "E2",
+            "rectified_value": "/",
+            "qualified_value": "/",
+            "good_value": "/",
+            "excellent_value": "/",
+            "level": "/"
+        },
+        {
+            "id": "顺丰速运",
+            "area": "86",
+            "type": "维度评估",
+            "dimension": "D3",
+            "element": "E1",
+            "rectified_value": 0.0,
+            "qualified_value": 0.0,
+            "good_value": 0.0,
+            "excellent_value": 0.0,
+            "level": "待整改"
+        },
+        {
+            "id": "宿州市优顺汽车运输有限公司",
+            "area": "86",
+            "type": "维度评估",
+            "dimension": "D3",
+            "element": "E1",
+            "rectified_value": "/",
+            "qualified_value": "/",
+            "good_value": "/",
+            "excellent_value": "/",
+            "level": "/"
+        },
+        {
+            "id": "顺丰速运",
+            "area": "86",
+            "type": "维度评估",
+            "dimension": "D3",
+            "element": "E2",
+            "rectified_value": -0.17146235711470242,
+            "qualified_value": -0.4,
+            "good_value": -0.13339466421343152,
+            "excellent_value": 0.0,
+            "level": "优秀"
+        },
+        {
+            "id": "宿州市优顺汽车运输有限公司",
+            "area": "86",
+            "type": "维度评估",
+            "dimension": "D3",
+            "element": "E2",
+            "rectified_value": "/",
+            "qualified_value": "/",
+            "good_value": "/",
+            "excellent_value": "/",
+            "level": "/"
+        },
+        {
+            "id": "顺丰速运",
+            "area": "86",
+            "type": "维度评估",
+            "dimension": "D3",
+            "element": "E3",
+            "rectified_value": -0.17142857142857143,
+            "qualified_value": -0.4,
+            "good_value": -0.13333333333333333,
+            "excellent_value": 0.0,
+            "level": "优秀"
+        },
+        {
+            "id": "宿州市优顺汽车运输有限公司",
+            "area": "86",
+            "type": "维度评估",
+            "dimension": "D3",
+            "element": "E3",
+            "rectified_value": "/",
+            "qualified_value": "/",
+            "good_value": "/",
+            "excellent_value": "/",
+            "level": "/"
+        },
+        {
+            "id": "顺丰速运",
+            "area": "86",
+            "type": "要素评估",
+            "element": "E1",
+            "rectified_value": -0.3427083436622388,
+            "qualified_value": -0.801058201058201,
+            "good_value": -0.2665530948324816,
+            "excellent_value": 0.0,
+            "level": "优秀"
+        },
+        {
+            "id": "宿州市优顺汽车运输有限公司",
+            "area": "86",
+            "type": "要素评估",
+            "element": "E1",
+            "rectified_value": "/",
+            "qualified_value": "/",
+            "good_value": "/",
+            "excellent_value": "/",
+            "level": "/"
+        },
+        {
+            "id": "顺丰速运",
+            "area": "86",
+            "type": "要素评估",
+            "element": "E2",
+            "rectified_value": -0.17146235711470242,
+            "qualified_value": -0.4,
+            "good_value": -0.13339466421343152,
+            "excellent_value": 0.0,
+            "level": "优秀"
+        },
+        {
+            "id": "宿州市优顺汽车运输有限公司",
+            "area": "86",
+            "type": "要素评估",
+            "element": "E2",
+            "rectified_value": "/",
+            "qualified_value": "/",
+            "good_value": "/",
+            "excellent_value": "/",
+            "level": "/"
+        },
+        {
+            "id": "顺丰速运",
+            "area": "86",
+            "type": "要素评估",
+            "element": "E3",
+            "rectified_value": -0.17142857142857143,
+            "qualified_value": -0.4,
+            "good_value": -0.13333333333333333,
+            "excellent_value": 0.0,
+            "level": "优秀"
+        },
+        {
+            "id": "宿州市优顺汽车运输有限公司",
+            "area": "86",
+            "type": "要素评估",
+            "element": "E3",
+            "rectified_value": "/",
+            "qualified_value": "/",
+            "good_value": "/",
+            "excellent_value": "/",
+            "level": "/"
+        },
+        {
+            "id": "顺丰速运",
+            "area": "86",
+            "type": "综合评估",
+            "rectified_value": -0.6855992722055126,
+            "qualified_value": -1.6010582010582008,
+            "good_value": -0.5332810923792465,
+            "excellent_value": 0.0,
+            "level": "优秀"
+        },
+        {
+            "id": "宿州市优顺汽车运输有限公司",
+            "area": "86",
+            "type": "综合评估",
+            "rectified_value": "/",
+            "qualified_value": "/",
+            "good_value": "/",
+            "excellent_value": "/",
+            "level": "/"
+        }
+    ]
+}

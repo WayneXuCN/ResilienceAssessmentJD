@@ -50,9 +50,9 @@ class ScalingMethod:
             If the parameters provided are invalid.
         """
         self.params = params
-        self.df = params.get("init_data")
-        self.filled_df = params.get("filled_data")
-        self.norm_df = params.get("norm_data")
+        self.df = params.get("init_data", None)
+        self.filled_df = params.get("filled_data", None)
+        self.norm_df = params.get("norm_data", None)
 
     def execute(self):
         """
@@ -88,15 +88,15 @@ class MinMaxNormalization(ScalingMethod):
             The normalized data using Min-Max normalization.
         """
         try:
-            min_vals = self.df.min()
-            max_vals = self.df.max()
+            min_vals = self.filled_df.min()
+            max_vals = self.filled_df.max()
             range_vals = max_vals - min_vals
 
             # Prevent normalization errors, If a column's data range is 0, keep the original value
-            normalized_data = self.df.copy()
-            for column in self.df.columns:
+            normalized_data = self.filled_df.copy()
+            for column in self.filled_df.columns:
                 if range_vals[column] != 0:
-                    normalized_data[column] = (self.df[column] - min_vals[column]) / range_vals[column]
+                    normalized_data[column] = (normalized_data[column] - min_vals[column]) / range_vals[column]
 
             return {"status": "success", "data": normalized_data}
 
@@ -121,16 +121,16 @@ class ZScoreNormalization(ScalingMethod):
             The normalized data using Z-Score normalization.
         """
         try:
-            mean_vals = self.df.mean()
-            std_vals = self.df.std()
+            mean_vals = self.filled_df.mean()
+            std_vals = self.filled_df.std()
             # Prevent normalization errors when the standard deviation is 0
-            normalized_data = self.df.copy()
-            for column in self.df.columns:
+            normalized_data = self.filled_df.copy()
+            for column in self.filled_df.columns:
                 if std_vals[column] != 0:
-                    normalized_data[column] = (self.df[column] - mean_vals[column]) / std_vals[column]
+                    normalized_data[column] = (self.filled_df[column] - mean_vals[column]) / std_vals[column]
                 else:
                     # When the standard deviation is 0, keep the original value
-                    normalized_data[column] = self.df[column]
+                    normalized_data[column] = self.filled_df[column]
 
             return {"status": "success", "data": normalized_data}
 
@@ -155,15 +155,15 @@ class BenchmarkRatioNormalization(ScalingMethod):
             The normalized data using Min-Max normalization.
         """
         try:
-            min_vals = self.df.min()
-            max_vals = self.df.max()
+            min_vals = self.filled_df.min()
+            max_vals = self.filled_df.max()
             range_vals = max_vals - min_vals
 
             # Prevent normalization errors, If a column's data range is 0, keep the original value
-            normalized_data = self.df.copy()
-            for column in self.df.columns:
+            normalized_data = self.filled_df.copy()
+            for column in self.filled_df.columns:
                 if range_vals[column] != 0:
-                    normalized_data[column] = (self.df[column] - min_vals[column]) / range_vals[column]
+                    normalized_data[column] = (self.filled_df[column] - min_vals[column]) / range_vals[column]
 
             return {"status": "success", "data": normalized_data}
 

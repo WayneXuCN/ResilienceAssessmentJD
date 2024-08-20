@@ -1,0 +1,82 @@
+{
+    "assess_type": "classification",
+    "assess_method": "MEE",
+    "weight_method": {
+        "subjective_method": "HEWM"
+    },
+    "normalization": "MinMax",
+    "parameters": {
+        "data": [
+            {
+                "area": "86",
+                "id": "顺丰速运",
+                "value": [
+                    8.58,
+                    -99,
+                    1,
+                    -99,
+                    30,
+                    16.64,
+                    5
+                ]
+            },
+            {
+                "area": "86",
+                "id": "宿州市优顺汽车运输有限公司",
+                "value": [
+                    -99,
+                    -99,
+                    -99,
+                    -99,
+                    -99,
+                    -99,
+                    -99
+                ]
+            }
+        ],
+        "criteria": [
+            {
+                "name": "建成区路网密度",
+                "attribute": "0",
+                "dimension": "D2",
+                "element": "E1"
+            },
+            {
+                "name": "可调配车辆数量",
+                "attribute": "0",
+                "dimension": "D2",
+                "element": "E1"
+            },
+            {
+                "name": "应急物流配送柔性化能力",
+                "attribute": "0",
+                "dimension": "D3",
+                "element": "E1"
+            },
+            {
+                "name": "应急物资物流运输时效",
+                "attribute": "0",
+                "dimension": "D2",
+                "element": "E2"
+            },
+            {
+                "name": "承运商信息管理运维增效能力",
+                "attribute": "0",
+                "dimension": "D3",
+                "element": "E2"
+            },
+            {
+                "name": "物流仓储用地面积",
+                "attribute": "0",
+                "dimension": "D2",
+                "element": "E1"
+            },
+            {
+                "name": "应急物资物流配送的智能化管理水平",
+                "attribute": "0",
+                "dimension": "D3",
+                "element": "E3"
+            }
+        ]
+    }
+}

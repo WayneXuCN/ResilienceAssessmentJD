@@ -33,6 +33,8 @@ class HEWM(DecisionMethod):
             self.weights[mask] = 0
             # 计算每个评估对象的有效指标数量
             valid_criteria_counts = np.count_nonzero(self.weights, axis=1)
+            # 避免除以零的错误
+            valid_criteria_counts = np.where(valid_criteria_counts == 0, 1, valid_criteria_counts)
             # 创建新的等权矩阵, 将缺失值修改为0
             new_weight = (1 / valid_criteria_counts[:, np.newaxis]) * np.ones((1, self.df.shape[1]))
             new_weight[mask] = 0

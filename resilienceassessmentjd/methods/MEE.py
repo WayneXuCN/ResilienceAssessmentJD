@@ -5,13 +5,13 @@
 # @Author    :Wenjie Xu
 # @Email     :wenjie.xu.cn@outlook.com
 
+import copy
 import traceback
 
 import numpy as np
 import pandas as pd
 
 from ..core.DecisionMethod import DecisionMethod
-from ..core.ExceptionHandler import *
 
 
 class MEE(DecisionMethod):
@@ -183,41 +183,68 @@ class MEE(DecisionMethod):
                 for e, e_criteria in elements.items():
                     if criterion in e_criteria:
                         corr_comp[e] = self.add_to_df(corr_comp[e], corr_criterion)
-
             for key, value in corr_comp.items():
+                value = copy.deepcopy(value)
                 if value.empty:
                     continue
                 value['分类等级'] = value.idxmax(axis=1)
                 value['评估对象'] = list(ids_area.keys())
 
                 if key in ['E1', 'E2', 'E3']:
-                    for id, area in ids_area.items():
-                        score = {
-                            'id': id,
-                            'area': area,
-                            'type': '要素评估',
-                            'element': key,
-                            'rectified_value': value.loc[value['评估对象'] == id, '待整改'].values[0],
-                            'qualified_value': value.loc[value['评估对象'] == id, '合格'].values[0],
-                            'good_value': value.loc[value['评估对象'] == id, '良好'].values[0],
-                            'excellent_value': value.loc[value['评估对象'] == id, '优秀'].values[0],
-                            'level': value.loc[value['评估对象'] == id, '分类等级'].values[0]
-                        }
+                    for _id, area in ids_area.items():
+                        if _id in self.params['invalid_ids']:
+                            score = {
+                                'id': _id,
+                                'area': area,
+                                'type': '要素评估',
+                                'element': key,
+                                'rectified_value': '/',
+                                'qualified_value': '/',
+                                'good_value': '/',
+                                'excellent_value': '/',
+                                'level': '/'
+                            }
+                        else:
+                            score = {
+                                'id': _id,
+                                'area': area,
+                                'type': '要素评估',
+                                'element': key,
+                                'rectified_value': value.loc[value['评估对象'] == _id, '待整改'].values[0],
+                                'qualified_value': value.loc[value['评估对象'] == _id, '合格'].values[0],
+                                'good_value': value.loc[value['评估对象'] == _id, '良好'].values[0],
+                                'excellent_value': value.loc[value['评估对象'] == _id, '优秀'].values[0],
+                                'level': value.loc[value['评估对象'] == _id, '分类等级'].values[0]
+                            }
                         result.append(score)
                 elif key.split('_')[0] in ['D1', 'D2', 'D3'] and key.split('_')[1] in ['E1', 'E2', 'E3']:
-                    for id, area in ids_area.items():
-                        score = {
-                            'id': id,
-                            'area': area,
-                            'type': '维度评估',
-                            'dimension': key.split('_')[0],
-                            'element': key.split('_')[1],
-                            'rectified_value': value.loc[value['评估对象'] == id, '待整改'].values[0],
-                            'qualified_value': value.loc[value['评估对象'] == id, '合格'].values[0],
-                            'good_value': value.loc[value['评估对象'] == id, '良好'].values[0],
-                            'excellent_value': value.loc[value['评估对象'] == id, '优秀'].values[0],
-                            'level': value.loc[value['评估对象'] == id, '分类等级'].values[0]
-                        }
+                    for _id, area in ids_area.items():
+                        if _id in self.params['invalid_ids']:
+                            score = {
+                                'id': _id,
+                                'area': area,
+                                'type': '维度评估',
+                                'dimension': key.split('_')[0],
+                                'element': key.split('_')[1],
+                                'rectified_value': '/',
+                                'qualified_value': '/',
+                                'good_value': '/',
+                                'excellent_value': '/',
+                                'level': '/'
+                            }
+                        else:
+                            score = {
+                                'id': _id,
+                                'area': area,
+                                'type': '维度评估',
+                                'dimension': key.split('_')[0],
+                                'element': key.split('_')[1],
+                                'rectified_value': value.loc[value['评估对象'] == _id, '待整改'].values[0],
+                                'qualified_value': value.loc[value['评估对象'] == _id, '合格'].values[0],
+                                'good_value': value.loc[value['评估对象'] == _id, '良好'].values[0],
+                                'excellent_value': value.loc[value['评估对象'] == _id, '优秀'].values[0],
+                                'level': value.loc[value['评估对象'] == _id, '分类等级'].values[0]
+                            }
                         result.append(score)
 
             # 计算综合评估结果
@@ -229,17 +256,29 @@ class MEE(DecisionMethod):
             corr_comp['分类等级'] = corr_comp.idxmax(axis=1)
             corr_comp['评估对象'] = list(ids_area.keys())
 
-            for id, area in ids_area.items():
-                compre_score = {
-                    'id': id,
-                    'area': area,
-                    'type': '综合评估',
-                    'rectified_value': corr_comp.loc[corr_comp['评估对象'] == id, '待整改'].values[0],
-                    'qualified_value': corr_comp.loc[corr_comp['评估对象'] == id, '合格'].values[0],
-                    'good_value': corr_comp.loc[corr_comp['评估对象'] == id, '良好'].values[0],
-                    'excellent_value': corr_comp.loc[corr_comp['评估对象'] == id, '优秀'].values[0],
-                    'level': corr_comp.loc[corr_comp['评估对象'] == id, '分类等级'].values[0]
-                }
+            for _id, area in ids_area.items():
+                if _id in self.params['invalid_ids']:
+                    compre_score = {
+                        'id': _id,
+                        'area': area,
+                        'type': '综合评估',
+                        'rectified_value': '/',
+                        'qualified_value': '/',
+                        'good_value': '/',
+                        'excellent_value': '/',
+                        'level': '/',
+                    }
+                else:
+                    compre_score = {
+                        'id': _id,
+                        'area': area,
+                        'type': '综合评估',
+                        'rectified_value': corr_comp.loc[corr_comp['评估对象'] == _id, '待整改'].values[0],
+                        'qualified_value': corr_comp.loc[corr_comp['评估对象'] == _id, '合格'].values[0],
+                        'good_value': corr_comp.loc[corr_comp['评估对象'] == _id, '良好'].values[0],
+                        'excellent_value': corr_comp.loc[corr_comp['评估对象'] == _id, '优秀'].values[0],
+                        'level': corr_comp.loc[corr_comp['评估对象'] == _id, '分类等级'].values[0]
+                    }
                 result.append(compre_score)
 
             return result

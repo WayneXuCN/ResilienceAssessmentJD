@@ -2,11 +2,23 @@
 name = "ResilienceAssessmentJD"
 version = "1.1.0"
 description = "Resilience assessment model developed by Wenjie Xu."
-authors = ["Wenjie Xu"]
+authors = ["Wenjie Xu <wenjie.xu.cn@outlook.com>"]
+maintainers = [
+    "Wenjie Xu <wenjie.xu.cn@outlook.com>",
+]
 readme = "README.md"
+license = "Apache-2.0"
+keywords = ["Resilience", "Assessment"]
+packages = [
+    { include = "ResilienceAssessmentJD" },
+]
+include = ["pyproject.toml", "README.md", "LICENSE"]
+
 
 [tool.poetry.dependencies]
 python = "^3.10"
+pandas = "^2.2.0"
+numpy = "^2.1.0"
 
 
 [tool.poetry.group.dev.dependencies]

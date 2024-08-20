@@ -34,6 +34,7 @@ class Criterion:
         self.criteria_names = tuple(self.criteria_dict.keys())
         self.params['criteria_dict'] = self.criteria_dict
         self.params['criteria_names'] = self.criteria_names
+        self.invalid_ids = []
         self.df = None
         self.filled_df = None
         self.ids_area = None
@@ -44,6 +45,7 @@ class Criterion:
             self.params['init_data'] = self.df  # Add the original data to the parameters
             self.params['filled_data'] = self.filled_df  # Add the filled data to the parameters
             self.params['ids_area'] = self.ids_area
+            self.params['invalid_ids'] = self.invalid_ids
             """
             if self.assess_method == "MEE":
                 level_boundaries = self.mee_level_boundaries(self.criteria_names)
@@ -247,6 +249,15 @@ class Criterion:
         # 创建DataFrame
         self.df = pd.DataFrame(value, index=ids, columns=self.criteria_names)
         self.filled_df = self.df.copy()
+        # 判断filled_df是否存在一行都是-99
+        if (self.filled_df == -99).all(axis=1).any():
+            # 逐行检查是否存在一行都是-99
+            for index, row in self.filled_df.iterrows():
+                if (row == -99).all():
+                    # 用1值填充该行
+                    self.filled_df.loc[index] = 1
+                    # 保存该行的index
+                    self.invalid_ids.append(index)
         # 检查是否存在空值
         if (self.filled_df == -99).values.any():
             # 用该列非-99值的均值填充-99

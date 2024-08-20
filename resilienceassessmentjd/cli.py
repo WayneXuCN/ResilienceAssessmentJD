@@ -1,7 +1,7 @@
 import json
 import os
 import argparse
-from resilience.core.UnifiedModel import UnifiedModel
+from ResilienceAssessmentJD.core.UnifiedModel import UnifiedModel
 
 
 def main():
