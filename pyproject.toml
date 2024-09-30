@@ -1,0 +1,88 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "resilienceassessmentjd"
+version = "1.0.0"
+description = "Resilience assessment model developed by Wenjie Xu."
+authors = [{ name = "Wenjie Xu", email = "wenjie.xu.cn@outlook.com" }]
+readme = "README.md"
+license = { file = "LICENSE" }
+keywords = ["Resilience", "Assessment"]
+requires-python = ">=3.10"
+dependencies = [
+    "pandas",
+    "numpy",
+    "scipy",
+    "seaborn",
+    "xlsxwriter",
+    "openpyxl",
+    "jupyter",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+
+[project.scripts]
+resilience-assessment = "resilienceassessmentjd.cli:main"
+
+[project.urls]
+"Homepage" = "https://github.com/WayneXuCN/ResilienceAssessmentJD"
+"Source Code" = "https://github.com/WayneXuCN/ResilienceAssessmentJD"
+"Bug Tracker" = "https://github.com/WayneXuCN/ResilienceAssessmentJD/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/resilienceassessmentjd"]
+
+[tool.hatch.build.targets.sdist]
+include = ["src/", "README.md", "LICENSE"]
+
+[tool.ruff]
+# Basic settings
+line-length = 88
+target-version = "py310"
+# Excluded files and directories
+exclude = [
+    ".eggs",
+    "*.egg-info",
+    ".git",
+    ".hg",
+    ".mypy_cache",
+    "__pycache__",
+    ".tox",
+    ".venv",
+    "build",
+    "dist",
+]
+
+[tool.ruff.lint]
+# Enabled rule sets
+select = [
+    "E",   # pycodestyle errors
+    "W",   # pycodestyle warnings
+    "F",   # Pyflakes (syntax error checking)
+    "I",   # isort (import sorting)
+    "B",   # flake8-bugbear (common bug checking)
+    "C4",  # flake8-comprehensions (comprehension optimizations)
+    "UP",  # pyupgrade (Python version upgrade suggestions)
+    "SIM", # flake8-simplify (code simplification)
+    "Q",   # flake8-quotes (quote checking)
+]
+# Ignored rules
+ignore = [
+    "E501", # Line length (handled by formatter)
+    "B008", # Mutable default values in function arguments (sometimes needed)
+]
+
+[tool.ruff.format]
+quote-style = "double"            # Use double quotes
+indent-style = "space"            # Use space indentation
+skip-magic-trailing-comma = false # Do not skip magic trailing comma
+line-ending = "auto"              # Use automatic line ending
